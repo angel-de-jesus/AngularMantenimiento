@@ -33,7 +33,7 @@ import { ViewTableComponent } from './cronogramap/view-table/view-table.componen
     ViewTableComponent,
   ],
   imports: [
-    BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule
+    BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

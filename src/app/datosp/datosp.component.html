@@ -20,37 +20,57 @@
       <li>
         <textarea [(ngModel)]="art.descripcion" name="descripcion" placeholder="Escribe aquí la descripcion..."></textarea>
       </li>    
-      <li>
-        <div class="grid grid-3">
-          <button class="btn-grid">
-            <span (click)="modificacion()" class="front">Modificar</span>
-          </button>
-          <button (click)="generatePdf()" class="btn-grid">
-            <span class="front">Open PDF</span>
-          </button>
-        </div>
-      </li>
+      
+      
+      
     </ul>
   </div>
-</form>
 
+</form>
 <div>
-<h1> Tabla de registro de casos de pruebas</h1>
-        <table id="contentToConvert" border="1">
-            <tr>
-              <td>Id</td><td>Entradas</td><td>Tipo de prueba</td><td>Salidas esperadas</td><td>Descripcion</td>
-            </tr>
-            <tr *ngFor="let art of articulos">
-              <td>{{art.id}}</td>
-              <td>{{art.entrada}}</td>
-              <td>{{art.tipop}}</td> 
-              <td>{{art.salidae}}</td>   
-              <td>{{art.descripcion}}</td>  
-              <td><button (click)="baja(art.id)">Borrar?</button></td>
-              <td><button (click)="seleccionar(art.id)">Seleccionar</button></td>            
-            </tr>
-          </table>
-<br>
-      <a routerLink ="/PlantillaPruebas">Ir a Registro de pruebas</a>
+  <div class="container">
+    <div class="Container">
+      <button class="btn btn-primary" (click)="ban=!ban" >
+        Modificar
+      </button>
+      <button class = " btn btn-secondary"(click)="generatePdf()" >
+        <span class="front">Open PDF</span>
+      </button>
+    </div>
+    <br>
+    <div class="conatiner">
+      <div *ngIf="ban" class="mx-auto">
+        <div  class="alert alert-warning" role="alert">
+          <h5>¿Esta seguro de modificar este registro?</h5>
+        </div>
+        <div class="mx-auto">
+          <button class="btn btn-primary" (click)="modificacion()">Aceptar</button>
+          <button class="btn btn-secondary" (click)="cancelar()">cancelar</button>
+        </div>
+      </div>
+    </div>
+    <h1> Tabla de registro de casos de pruebas</h1>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th><th>Entradas</th><th>Tipo de prueba</th><th>Salidas esperadas</th><th>Descripcion</th><th colspan="2" style="text-align: center;">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of articulos">
+          <td>{{art.id}}</td>
+          <td>{{art.entrada}}</td>
+          <td>{{art.tipop}}</td> 
+          <td>{{art.salidae}}</td>   
+          <td>{{art.descripcion}}</td>  
+          <td><button class="btn btn-danger btn-sm"(click)="baja(art.id)">Borrar</button></td>
+          <td><button class="btn btn-primary btn-sm" (click)="seleccionar(art.id)">Seleccionar</button></td>            
+        </tr>
+      </tbody> 
+    </table>
+  </div>  
+  
+  <br>
+  <a routerLink ="/PlantillaPruebas">Ir a Registro de pruebas</a>
       
 </div>

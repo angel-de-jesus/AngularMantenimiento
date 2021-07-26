@@ -14,7 +14,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class DatospComponent implements OnInit {
 
   articulos:any;
-  
+  ban=false;
   art={
     id:null,
     entrada:null,
@@ -24,6 +24,7 @@ export class DatospComponent implements OnInit {
   }
   constructor(protected dashService: UsersService) { }
   ngOnInit() {
+    
     this.recuperarTodos();
   }
 
@@ -45,9 +46,13 @@ export class DatospComponent implements OnInit {
     this.dashService.modificacionPla(this.art).subscribe(datos => {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
+        this.ban=false;
         this.recuperarTodos();
       }
     });    
+  }
+  cancelar(){
+    this.ban=false
   }
   
   seleccionar(codigo) {
